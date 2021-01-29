@@ -4,16 +4,17 @@ About this app:-
   
  My main purpose of making this app was to learn flutter. It's been two months that I'm teaching myself Flutter, It's really fun thing to learn. I decied to do this project and I will add more fetures on it in the future. 
 
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
+
+
+
+
+
+
+
+
+
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
 
