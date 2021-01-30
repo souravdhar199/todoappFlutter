@@ -1,8 +1,13 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 int _tasks = 0;
 String names;
+
+
+List <String> _pickedDate = [];
 
 
 var _months = [
@@ -19,7 +24,7 @@ var _months = [
   'November',
   'December'
 ];
-DateTime _selectedDate;
+
 
 var _days = [
   'Monday',
@@ -31,6 +36,7 @@ var _days = [
   'Sunday',
 ];
 int i=1;
+DateTime _selectedDate;
 
 class pageone extends StatefulWidget {
   pageone(String s){
@@ -83,7 +89,9 @@ class _pageoneState extends State<pageone> {
             initialCalendarFormat: CalendarFormat.week,
             //This onday selected method will pick a date when we press the date
             onDaySelected: (DateTime day, List events, List holidays) {
-              _selectedDate = day;
+           setState(() {
+             _selectedDate = day;
+           });
             },
           ),
           new Container(
@@ -119,8 +127,7 @@ class _pageoneState extends State<pageone> {
   }
 
  Widget _containaierbuilder() {
-    return
-      ListView.builder(
+    return ListView.builder(
           shrinkWrap: true,
           physics: ScrollPhysics(),
           itemCount: allTheselectedDate.length,
@@ -129,41 +136,11 @@ class _pageoneState extends State<pageone> {
           }
 
     );
-
  }
 }
 
 
-Widget _showSelectedDate(var _selectd) {
-  return Container(
-    child: new Text(
-      '  ${_days[_selectd.weekday - 1]} ${_selectd.day}, ${_months[_selectd.month - 1]}',
-      style: new TextStyle(
-        color: new Color(0xff395773),
-        fontWeight: FontWeight.bold,
-        fontSize: 18,
-      ),
-    ),
-  );
-}
-
-
-
-
-
-class _wrapEverythingup extends StatefulWidget {
-  @override
-  __wrapEverythingupState createState() => __wrapEverythingupState();
-}
-
-class __wrapEverythingupState extends State<_wrapEverythingup> {
-  List<Widget> _taskbox = [];
-
-  _addTask() {
-    _taskbox.add(_addtasksBox());
-    setState(() {});
-  }
-
+class _wrapEverythingup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -172,7 +149,40 @@ class __wrapEverythingupState extends State<_wrapEverythingup> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          _showSelectedDate(_selectedDate),
+          Container(
+            child: new Text(
+              '  ${_days[_selectedDate.weekday - 1]} ${_selectedDate.day}, ${_months[_selectedDate.month - 1]}',
+              style: new TextStyle(
+                color: new Color(0xff395773),
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ),
+          _addnoteButton(),
+        ],
+      ),
+    );
+  }
+}
+
+class _addnoteButton extends StatefulWidget {
+  @override
+  __addnoteButtonState createState() => __addnoteButtonState();
+}
+
+class __addnoteButtonState extends State<_addnoteButton> {
+  List<Widget> _taskbox = [];
+  _addTask() {
+    _taskbox.add(_addtasksBox());
+    setState(() {});
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children:<Widget> [
           SizedBox(
             height: 20,
           ),
@@ -200,14 +210,20 @@ class __wrapEverythingupState extends State<_wrapEverythingup> {
               borderRadius: BorderRadius.circular(30),
             ),
           ),
+
+
         ],
+
+
       ),
     );
-
   }
 }
 
 
+/*
+
+ */
 Widget _showThealloptions(var _taskbox) {
   return Container(
     height: 200,
@@ -224,6 +240,9 @@ Widget _showThealloptions(var _taskbox) {
   );
 }
 
+/*
+Allow user to type in the box
+ */
 Widget _addtasksBox() {
   return Container(
     padding: EdgeInsets.all(10),
