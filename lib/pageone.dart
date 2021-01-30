@@ -241,7 +241,7 @@ Widget _showThealloptions(var _taskbox) {
 }
 
 /*
-Allow user to type in the box
+Allow user to type in the box in the container
  */
 Widget _addtasksBox() {
   return Container(
