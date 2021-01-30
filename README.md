@@ -1,16 +1,26 @@
-# todoappflutter
 
-A new Flutter application.
+About this app:-
+  This is a simple to do list app where user will add their task for specific date and it will help them not to forget thier task.
+  
+ My main purpose of making this app was to learn flutter. It's been two months that I'm teaching myself Flutter, It's really fun thing to learn. I decied to do this project and I will add more fetures on it in the future. 
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+
+
+
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+
+
+
+
+
+
+![flutterapppic](https://user-images.githubusercontent.com/56749420/106237391-bb634580-61cc-11eb-80c7-afce1dee4bcc.png)
