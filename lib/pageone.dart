@@ -117,6 +117,31 @@ class _pageoneState extends State<pageone> {
                 borderRadius: BorderRadius.circular(30)),
           ),
           SizedBox(
+            height: 10,
+          ),
+          new Container(
+            padding: EdgeInsets.all(5),
+            height: 45,
+            width: 400,
+            child: new FlatButton(
+              child: new Text(
+                "Clear all the Task",
+                style: new TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {
+                setState(() {
+                  allTheselectedDate.clear();
+                });
+              },
+            ),
+            decoration: BoxDecoration(
+                color: new Color(0xff395773),
+                borderRadius: BorderRadius.circular(30)),
+          ),
+          SizedBox(
             height: 20,
           ),
           _containaierbuilder(),
@@ -124,28 +149,31 @@ class _pageoneState extends State<pageone> {
       ),
     );
   }
-
   Widget _containaierbuilder() {
-    return ListView.builder(
-        shrinkWrap: true,
-        physics: ScrollPhysics(),
-        itemCount: allTheselectedDate.length,
-        itemBuilder: (BuildContext context, int index) {
-          final Widget item =allTheselectedDate[index];
-          return Dismissible(
-              key: new ValueKey(item.toString()),
-              onDismissed: (DismissDirection direction) {
-                setState(() {
-                  allTheselectedDate.removeAt(index);
-                });
-                Scaffold.of(context).showSnackBar(
-                  new SnackBar(content: new Text('Well done')),
-                );
-              },
-              child: allTheselectedDate[index]);
-        });
+    return Container(
+      child: ListView.builder(
+          shrinkWrap: true,
+          physics: ScrollPhysics(),
+          itemCount: allTheselectedDate.length,
+          itemBuilder: (BuildContext context, int index) {
+            final Widget item =allTheselectedDate[index];
+            return Dismissible(
+                key: new Key(item.toString()),
+                onDismissed: (DismissDirection direction) {
+                  setState(() {
+                    allTheselectedDate.removeAt(index);
+                  });
+                  Scaffold.of(context).showSnackBar(
+                    new SnackBar(content: new Text('Well done')),
+                  );
+                },
+                child: allTheselectedDate[index]);
+          }),
+    );
   }
-}
+
+  }
+
 
 class _wrapEverythingup extends StatelessWidget {
   @override
