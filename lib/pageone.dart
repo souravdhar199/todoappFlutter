@@ -6,9 +6,7 @@ import 'package:table_calendar/table_calendar.dart';
 int _tasks = 0;
 String names;
 
-
-List <String> _pickedDate = [];
-
+List<String> _pickedDate = [];
 
 var _months = [
   'January',
@@ -25,7 +23,6 @@ var _months = [
   'December'
 ];
 
-
 var _days = [
   'Monday',
   'Tuesday',
@@ -35,25 +32,28 @@ var _days = [
   'Saturday',
   'Sunday',
 ];
-int i=1;
+int i = 1;
 DateTime _selectedDate;
 
 class pageone extends StatefulWidget {
-  pageone(String s){
-    names=s;
+  pageone(String s) {
+    names = s;
   }
+
   @override
   _pageoneState createState() => _pageoneState();
 }
-List<Widget> allTheselectedDate = [];
-class _pageoneState extends State<pageone> {
 
+List<Widget> allTheselectedDate = [];
+
+class _pageoneState extends State<pageone> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _controller = CalendarController();
   }
+
   CalendarController _controller;
 
   @override
@@ -89,9 +89,9 @@ class _pageoneState extends State<pageone> {
             initialCalendarFormat: CalendarFormat.week,
             //This onday selected method will pick a date when we press the date
             onDaySelected: (DateTime day, List events, List holidays) {
-           setState(() {
-             _selectedDate = day;
-           });
+              setState(() {
+                _selectedDate = day;
+              });
             },
           ),
           new Container(
@@ -107,9 +107,9 @@ class _pageoneState extends State<pageone> {
                 ),
               ),
               onPressed: () {
-               setState(() {
-                 allTheselectedDate.add(_wrapEverythingup());
-               });
+                setState(() {
+                  allTheselectedDate.add(_wrapEverythingup());
+                });
               },
             ),
             decoration: BoxDecoration(
@@ -120,25 +120,32 @@ class _pageoneState extends State<pageone> {
             height: 20,
           ),
           _containaierbuilder(),
-
         ],
       ),
     );
   }
 
- Widget _containaierbuilder() {
+  Widget _containaierbuilder() {
     return ListView.builder(
-          shrinkWrap: true,
-          physics: ScrollPhysics(),
-          itemCount: allTheselectedDate.length,
-          itemBuilder: (BuildContext context, int index) {
-            return allTheselectedDate[index];
-          }
-
-    );
- }
+        shrinkWrap: true,
+        physics: ScrollPhysics(),
+        itemCount: allTheselectedDate.length,
+        itemBuilder: (BuildContext context, int index) {
+          final Widget item =allTheselectedDate[index];
+          return Dismissible(
+              key: new ValueKey(item.toString()),
+              onDismissed: (DismissDirection direction) {
+                setState(() {
+                  allTheselectedDate.removeAt(index);
+                });
+                Scaffold.of(context).showSnackBar(
+                  new SnackBar(content: new Text('Well done')),
+                );
+              },
+              child: allTheselectedDate[index]);
+        });
+  }
 }
-
 
 class _wrapEverythingup extends StatelessWidget {
   @override
@@ -173,16 +180,18 @@ class _addnoteButton extends StatefulWidget {
 
 class __addnoteButtonState extends State<_addnoteButton> {
   List<Widget> _taskbox = [];
+
   _addTask() {
     _taskbox.add(_addtasksBox());
     setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children:<Widget> [
+        children: <Widget>[
           SizedBox(
             height: 20,
           ),
@@ -210,16 +219,11 @@ class __addnoteButtonState extends State<_addnoteButton> {
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-
-
         ],
-
-
       ),
     );
   }
 }
-
 
 /*
 
@@ -258,32 +262,6 @@ Widget _addtasksBox() {
         border: Border.all(color: new Color(0xff395773))),
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Widget _subtileforheading() {
   if (_tasks == 0) {
