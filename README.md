@@ -8,7 +8,7 @@ About this app:-
  1. Let the user select the date and based on the date user can add their task.
  2. Tap add note button to create the task for that specific day.
  3. Swipe left or right to delete the task after completing it.
- 4. A snack bar will pop up when user dlete the task. 
+ 4. A snack bar will pop up when user delete the task. 
  
 
 
